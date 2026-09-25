@@ -14,9 +14,6 @@ export default async function Home() {
   return (
     <div>
       <h1>Welcome to Next.js world</h1>
-      <Link href="/sign-in">
-        <Button>Sign in</Button>
-      </Link>
       <UserButton />
     </div>
   );
