@@ -1,16 +1,17 @@
 "use client";
-import React, {useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 
 function Provider({ children }) {
   const { isLoaded, user } = useUser();
+  const [userDetail, setUserDetail] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     if (isLoaded && user) {
       CreateNewUser();
     }
-  },[isLoaded, user]);
+  }, [isLoaded, user]);
 
   const CreateNewUser = async () => {
     try {
@@ -19,11 +20,16 @@ function Provider({ children }) {
         email: user.primaryEmailAddress?.emailAddress,
       });
       console.log("User synchronized:", result.data);
+      setUserDetail(result.data);
     } catch (error) {
       console.error("Failed to synchronize user:", error);
     }
-  }
-  return <div>{children}</div>;
+  };
+  return (
+    <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+      <div>{children}</div>
+    </UserDetailContext.Provider>
+  );
 }
 
 export default Provider;
