@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import AddNewCourseDialog from "./addNewCourseDialog";
 
 function CourseList() {
   const [courseList, setCourseList] = React.useState([]);
@@ -17,9 +18,11 @@ function CourseList() {
             height={100}
           />
           <h2 className="my-2 text-xl font-bold">
-            Look like yuo haven't created any courses yet
+            Look like you haven't created any courses yet
           </h2>
-          <Button>+ Create your first course</Button>
+          <AddNewCourseDialog>
+            <Button>+ Create your first course</Button>
+          </AddNewCourseDialog>
         </div>
       ) : (
         <div>List of Courses</div>

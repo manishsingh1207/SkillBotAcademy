@@ -23,6 +23,7 @@ import {
   Compass,
   WalletCards,
 } from "lucide-react";
+import AddNewCourseDialog from "./addNewCourseDialog";
 
 const SideBarOptions = [
   {
@@ -66,7 +67,9 @@ function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <Button>Create New Course</Button>
+          <AddNewCourseDialog>
+            <Button className="w-full">Create New Course</Button>
+          </AddNewCourseDialog>
         </SidebarGroup>
         <SidebarGroupContent>
           <SidebarMenu>
